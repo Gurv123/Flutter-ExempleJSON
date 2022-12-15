@@ -3,16 +3,16 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 
 class Task {
-  int? userId;
-  int? id;
-  String? title;
-  bool? completed;
+  late int userId;
+  late int id;
+  late String title;
+  late bool completed;
 
   Task({
-    this.userId,
-    this.id,
-    this.title,
-    this.completed
+    required this.userId,
+    required this.id,
+    required this.title,
+    required this.completed,
   });
 
   Task.fromJson(Map<String, dynamic> json) {
@@ -38,7 +38,7 @@ class Task {
   static Future<List<Task>> loadTasks() async {
     String jsonString = await _loadTaskAsset();
     List<dynamic> jsonResponse = jsonDecode(jsonString) as List;
-    List<Task> rep=[];
+    List<Task> rep = [];
     jsonResponse.forEach((element) {
       rep.add(Task.fromJson(element));
     });
