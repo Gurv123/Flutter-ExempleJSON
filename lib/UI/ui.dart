@@ -60,21 +60,19 @@ class _MyAppState extends State<MyApp> {
 
 
   _downloadList() {
-    print("---- 1 ----");
     Task.loadTasks().then((value) {
-    //Task.loadTasks().then((value) =>
-      print("---- 1.1 ----");
       setState(() {
-        print("---- 1.1.1 ----");
         value.forEach((element) {
-          print("---- 1.1.1.1 ----");
           taskList.add(element);
         });
       });
     });
   }
 
-  _addTask() {
-
+  _addTask(BuildContext buildContext) async {
+    final newTask = await Navigator.push(context, MaterialPageRoute(builder: (context) => AddTask()));
+    setState(() {
+      taskList.add(newTask);
+    });
   }
 }
