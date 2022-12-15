@@ -15,12 +15,12 @@ class _MyAppState extends State<MyApp> {
         title: const Text("My Todolist"),
         actions: [
           IconButton(
-            onPressed: _downloadList(),
+            onPressed: () => _downloadList(),
             icon: const Icon(Icons.file_download),
             color: Colors.white,
           ),
           IconButton(
-            onPressed: _addTask(),
+            onPressed: () => _addTask(),
             icon: const Icon(Icons.add),
             color: Colors.white,
           )
@@ -45,9 +45,9 @@ class _MyAppState extends State<MyApp> {
                     leading: Text("Id : ${taskList[index].id}"
                     ),
                     title: Text(taskList[index].title),
-                    trailing: taskList[index].completed
-                      const Icon(Icons.check, color: Colors.amberAccent,)
-                      const Icon(Icons.close, color: Colors.amberAccent,)
+                    trailing: taskList[index].completed?
+                      const Icon(Icons.check, color: Colors.amberAccent):
+                      const Icon(Icons.close, color: Colors.amberAccent),
                 ),
               ),
             ),
@@ -58,8 +58,20 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  _downloadList() {
 
+  _downloadList() {
+    print("---- 1 ----");
+    Task.loadTasks().then((value) {
+    //Task.loadTasks().then((value) =>
+      print("---- 1.1 ----");
+      setState(() {
+        print("---- 1.1.1 ----");
+        value.forEach((element) {
+          print("---- 1.1.1.1 ----");
+          taskList.add(element);
+        });
+      });
+    });
   }
 
   _addTask() {
