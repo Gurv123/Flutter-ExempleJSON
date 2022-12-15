@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Model/task.dart';
+import 'addTask.dart';
 
 class MyApp extends StatefulWidget {
   @override
@@ -20,7 +21,7 @@ class _MyAppState extends State<MyApp> {
             color: Colors.white,
           ),
           IconButton(
-            onPressed: () => _addTask(),
+            onPressed: () => _addTask(context),
             icon: const Icon(Icons.add),
             color: Colors.white,
           )

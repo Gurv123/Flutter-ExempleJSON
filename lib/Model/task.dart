@@ -44,4 +44,8 @@ class Task {
     });
     return rep;
   }
+
+  static Task fakeTask() {
+    return Task(userId: 1234, id: 5678, title: "Fake task", completed: false);
+  }
 }
