@@ -32,7 +32,7 @@ class Task {
   }
 
   static Future<String> _loadTaskAsset() async {
-    return await rootBundle.loadString('asset/tasks.json');
+    return await rootBundle.loadString('tasks.json');
   }
 
   static Future<List<Task>> loadTasks() async {
